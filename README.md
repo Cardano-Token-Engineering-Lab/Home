@@ -1,6 +1,6 @@
 # Cardano Token Engineering Lab
 
-![CTEL Logo](./Design%20Assets/CTEL_Logo.png)
+![CTEL Logo](./Asset%20Design/CTEL_Logo.png)
 
 Cardano Token Engineering resources for developing, understanding, and modeling design mechansims in the Cardano ecosystem.
 
