@@ -20,26 +20,13 @@ def asset_info(policy_id, asset_name):
     df = api.asset(asset=policy_id + asset_name, return_type="pandas")
     return df
 
-
-
-
 def tokens_in_policy(policy_id):
-    data = api.assets_policy(policy_id)
-
-    data_dict = {
-        "asset": [obj.asset for obj in data],
-        "quantity": [obj.quantity for obj in data],
-    }
-
-    df_tokens = pd.DataFrame(data_dict)
-    policy_token_count = len(df_tokens.index)
-
-    print(df_tokens)
+    df = api.assets_policy(policy_id, return_type="pandas")
+    policy_token_count = len(df.index)
     print(
         f"The total number of tokens under the selected policy is/are: {policy_token_count}"
     )
-
-    return df_tokens
+    return df
 
 df_info = asset_info(policy_id,asset_name)
 

@@ -39,8 +39,8 @@ print(df_lq_addy.head(10))
 
 
 def xls_writer(df, token_name):
-    filename = token_name + " token holders data.xlsx"
-    df.to_excel("token holders data.xlsx")
+    filename = token_name + "_token_holders_data.xlsx"
+    df.to_excel(filename)
 
 
 xls_writer(df_lq_addy, token_name)
