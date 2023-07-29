@@ -1,7 +1,7 @@
 from blockfrost import BlockFrostApi, ApiError, ApiUrls
 import pandas as pd
 
-api = BlockFrostApi(project_id="Your_API_key")
+api = BlockFrostApi(project_id="you_api_key")
 
 # LQ token information
 policy_id = "da8c30857834c6ae7203935b89278c532b3995245295456f993e1d24"
@@ -16,7 +16,7 @@ while True:
     data = api.asset_addresses(asset=policy_id + asset_name, page=page)
     asset_address.extend(data)
 
-    if page > 100:
+    if len(data) < 100:
         break
     page += 1
 
