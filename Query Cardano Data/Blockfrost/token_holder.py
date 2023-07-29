@@ -1,7 +1,11 @@
 from blockfrost import BlockFrostApi, ApiError, ApiUrls
 import pandas as pd
+import os
+from dotenv import load_dotenv, dotenv_values
 
-api = BlockFrostApi(project_id="you_api_key")
+load_dotenv()
+api_key = os.getenv("BLOCKFROST_API_TOKEN")
+api = BlockFrostApi(project_id=api_key)
 
 # LQ token information
 policy_id = "da8c30857834c6ae7203935b89278c532b3995245295456f993e1d24"
