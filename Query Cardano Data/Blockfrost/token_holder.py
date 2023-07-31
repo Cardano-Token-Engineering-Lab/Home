@@ -1,46 +1,34 @@
-from blockfrost import BlockFrostApi, ApiError, ApiUrls
 import pandas as pd
-import os
-from dotenv import load_dotenv, dotenv_values
+from token_info import asset_info
+from helper_functions import read_csv, write_csv, get_api_token
 
-load_dotenv()
-api_key = os.getenv("BLOCKFROST_API_TOKEN")
-api = BlockFrostApi(project_id=api_key)
+# Load Blockfrost API key
+api = get_api_token()
 
-# LQ token information
+# Token information to be queried analyzed
 policy_id = "da8c30857834c6ae7203935b89278c532b3995245295456f993e1d24"
 asset_name = "4c51"
-
 token_name = bytearray.fromhex(asset_name).decode()
-page = 1
-count = 100
-asset_address = []
 
-while True:
-    data = api.asset_addresses(asset=policy_id + asset_name, page=page)
-    asset_address.extend(data)
+def query_holders(policy_id, asset_name, page):
+    df = pd.DataFrame()
+    df_info = asset_info(policy_id,asset_name)
+    while True:
+        data = api.asset_addresses(asset=policy_id + asset_name, page=page, return_type="pandas")
+        df = pd.concat([data,df])
 
-    if len(data) < 100:
-        break
-    page += 1
+        if len(data) < 100:
+            break
+        page += 1
 
-data_dict = {
-    "address": [obj.address for obj in asset_address],
-    "quantity": [obj.quantity for obj in asset_address],
-}
+    decimal = df_info['metadata.decimals'].iloc[0]
+    df["quantity"] = pd.to_numeric(df["quantity"], errors="coerce")
+    df["quantity"] = df["quantity"] / (10**decimal)
+    return df
 
-df_lq_addy = pd.DataFrame(data_dict)
+# Pull in data if needing to query use first statement or if available locally use second line
+df_asset_addy = query_holders(policy_id, asset_name, 1)
+# df_asset_addy = read_csv(token_name + "_holders.csv")
 
-# Decimals for LQ token is 6
-df_lq_addy["quantity"] = pd.to_numeric(df_lq_addy["quantity"], errors="coerce")
-df_lq_addy["quantity"] = df_lq_addy["quantity"] / 10**6
-
-print(df_lq_addy.head(10))
-
-
-def xls_writer(df, token_name):
-    filename = token_name + "_token_holders_data.xlsx"
-    df.to_excel(filename)
-
-
-xls_writer(df_lq_addy, token_name)
+# Run if needing to save data locally
+write_csv(df_asset_addy, token_name + "_holders.csv")

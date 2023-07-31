@@ -1,17 +1,13 @@
-from blockfrost import BlockFrostApi
 import pandas as pd
-import os
-from dotenv import load_dotenv
 import matplotlib.pyplot as plt
+from helper_functions import read_csv, write_csv, get_api_token
 
-load_dotenv()
-api_key = os.getenv("BLOCKFROST_API_TOKEN")
-api = BlockFrostApi(project_id=api_key)
+# Load Blockfrost API key
+api = get_api_token()
 
-# LQ token information
+# Token information to be queried analyzed
 policy_id = "da8c30857834c6ae7203935b89278c532b3995245295456f993e1d24"
 asset_name = "4c51"
-
 token_name = bytearray.fromhex(asset_name).decode()
 
 def unix_to_time(df):
@@ -19,33 +15,20 @@ def unix_to_time(df):
     return df
 
 def get_asset_tx(policy_id, asset_name, page):
-
-    page = 1
-    count = 100
-    df_asset_tx = pd.DataFrame()
-
+    df = pd.DataFrame()
     while True:
         data = api.asset_transactions(asset=policy_id + asset_name, page=page, return_type="pandas")
-        df_asset_tx = pd.concat([data,df_asset_tx])
+        df = pd.concat([data,df])
         if len(data) < 100:
-    #    if page > 3:
             break
         page += 1
     
-    df_asset_tx = unix_to_time(df_asset_tx)
-    
-    return df_asset_tx
-
-def write_csv(df, file_path):
-    df.to_csv(file_path, index=False)
-
-#write_csv(df_asset_tx, token_name+"_tx_data.csv")
-
-def read_csv(filepath):
-    filename = token_name+"_tx_data.csv"
-    df = pd.read_csv(filename)
+    df = unix_to_time(df)
+    write_csv(df_tx_data, token_name+"_tx_data.csv")
     return df
 
+# Use one of the following lines to get data
+# df_tx_data = get_asset_tx(policy_id, asset_name, 1)
 df_tx_data = read_csv(token_name+"_tx_data.csv")
 
 def histogram(df, token_name):
