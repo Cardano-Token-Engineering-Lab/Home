@@ -28,8 +28,8 @@ def get_asset_tx(policy_id, asset_name, page):
     return df
 
 # Use one of the following lines to get data
-# df_tx_data = get_asset_tx(policy_id, asset_name, 1)
-df_tx_data = read_csv(token_name+"_tx_data.csv")
+df_tx_data = get_asset_tx(policy_id, asset_name, 1)
+# df_tx_data = read_csv(token_name+"_tx_data.csv")
 
 def histogram(df, token_name):
     df['year_month'] = df['time'].dt.to_period('M')

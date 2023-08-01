@@ -29,4 +29,4 @@ df_tokens_in_policy = tokens_in_policy(policy_id)
 # Get xlsx sheet info prepared
 dataframes_dict = {'Asset Info': df_info, 'Tokens In Policy': df_tokens_in_policy}
 
-create_info_xlsx(dataframes_dict, token_name+".xlsx")
+# create_info_xlsx(dataframes_dict, token_name+".xlsx")
