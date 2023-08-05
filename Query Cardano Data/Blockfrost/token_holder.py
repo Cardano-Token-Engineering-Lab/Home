@@ -1,15 +1,15 @@
 import pandas as pd
 from token_info import asset_info
 from helper_functions import read_csv, write_csv, get_api_token
+from project_data import asset_name, policy_id, token_name
 
 # Load Blockfrost API key
 api = get_api_token()
 
-# Token information to be queried analyzed
-policy_id = "da8c30857834c6ae7203935b89278c532b3995245295456f993e1d24"
-asset_name = "4c51"
-token_name = bytearray.fromhex(asset_name).decode()
+asset_name = asset_name
+policy_id = policy_id
 
+# Query the current token holding addresses
 def query_holders(policy_id, asset_name, page):
     df = pd.DataFrame()
     df_info = asset_info(policy_id,asset_name)
@@ -20,6 +20,7 @@ def query_holders(policy_id, asset_name, page):
         if len(data) < 100:
             break
         page += 1
+        print(f'Total number of API calls used: {page}')
 
     decimal = df_info['metadata.decimals'].iloc[0]
     df["quantity"] = pd.to_numeric(df["quantity"], errors="coerce")
