@@ -15,7 +15,7 @@ The goal of the Cardano Token Engineering Lab is to help:
 3. Build a community of like-minded thinkers, engineers, analysts, and theorists to grow this area and help make the Cardano Ecosystem stronger
 4. Provide a background and starting place for aspiring token engineers of a variety of backgrounds to be able to contribute
 
-# Suggested Readings to get Started
+# Suggested Readings/Videos to get Started
 Here are a list of books that are great resources and will likely have reviews of main concepts presented here.
 1. [Token Economy: Money, NFT, DeFI by zshermin Voshgmir](https://github.com/sherminvo/TokenEconomyBook)
     A great non-technical book that goes on to explain the hows and whys of token economies, such as the function of money, the evolution of currency and the birth of tokenization as well as use cases for token, NFTs and how DeFi works.  Overall, a great read to help understand the importance around how token engineering and token economies are more than just the combination of computer science, game theory, and economics and how the social aspects is just as critical
@@ -23,6 +23,8 @@ Here are a list of books that are great resources and will likely have reviews o
     An excellent open source book that can be read online for free that goes through the basics on Python modeling and is built using Jupyter Notebooks.  This gives a super easy Python interface to work from a browser that doesn't require a local install of any software to work.  Having a good basic understanding of Python will be core for the skills and direction of this project, although much of the modeling can be done in most programming langauges.
 3. [Introduction to the Modeling and Analysis of Complex Systems by Hiroki Sayama](https://open.umn.edu/opentextbooks/textbooks/233)
     A classic, college-level modeling and analysis book that is open-source and available for free. The author goes through the principles and builds complexity with topics and models throughout the book.  The key takeaway of this book is that modeling complex systems, as with most engineering fundamentals, focuses on starting with small, simple models and slowly building off that.  This book will presume that the reader already has a firm understanding of Python.
+4. [Algorithmic Game Theory (Stanford CS364A) - Tim Roughgarden](https://youtube.com/playlist?list=PLEGCF-WLh2RJBqmxvZ0_ie-mleCFhi2N4)
+    An older academic course, but it helps to set the stage of the roots of token engineering by bridging concepts that split between computer science and game theory.  Tim Roughgarden is a PhD, with a lot of experience on Mechanism Design which is foundation of Token Engineering.
 
 # Modeling and Analysis
 A majority of the analysis will be primarily using the Python programming language, where there are some open-source Python libraries designed to model complex, dynamic systems such as token economies.  Resources will be created here to help anyone get started with learning Python, utilizing the modeling libraries available, and being able to start to contribute to the Lab.
