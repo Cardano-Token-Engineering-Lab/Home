@@ -3,7 +3,8 @@
 ![CTEL Logo](./Asset%20Design/CTEL_Logo.png)
 
 Cardano Token Engineering resources for developing, understanding, and modeling design mechanisms in the Cardano ecosystem.
-For more information visit: [The Token Lab](https://thetokenlab.xyz)
+
+For more information on the project please visit: [The Token Lab](https://thetokenlab.xyz)
 
 # Background
 This GitHub repo is intended to be the home for token engineering where content will be created for a wide variety of users, from those who aspire to learn data analytics and modeling, to those with existing analytics backgrounds, and for researchers and academics to participate and contribute to ongoing research about projects in the Cardano Ecosystem.
