@@ -31,3 +31,8 @@ Here are a list of books that are great resources and will likely have reviews o
 
 # Modeling and Analysis
 A majority of the analysis will be primarily using the Python programming language, where there are some open-source Python libraries designed to model complex, dynamic systems such as token economies and design mechanisms.  Resources will be created here to help anyone get started with learning Python, utilizing the modeling libraries available, and being able to start to contribute to the Lab.
+
+A major helper in this space will be leveraging cadCAD, an open source dynamic systems modeling library created in Python.  This open source library is designed to help model complex and adaptive systems, much like those we commonly see in token engineering and mechanism design.  You can read more at the cadCAD GitHub Repo: [cadCAD GitHub Repo](https://github.com/cadCAD-org/cadCAD)
+
+# Data Querying
+As this project progresses the aim is to share methods and ways to pull on-chain data for modeling.  Right now we have some basic scripts demonstrating how to pull data utilizing Blockfrosts REST API endpoints.  We further have plans on demonstrating similar data extraction leveraging KOIOS gREST API, ran and operated by the Cardano Operators Guild.  A link to the data querying repo can be found here:  [Query Cardano Data](https://github.com/Cardano-Token-Engineering-Lab/Query-Cardano-Data)
